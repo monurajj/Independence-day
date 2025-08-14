@@ -1,14 +1,13 @@
 "use client";
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 
 const FlagHosting = () => {
   const [isHosting, setIsHosting] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [showShare, setShowShare] = useState(false);
   const [animationPhase, setAnimationPhase] = useState(0); // 0: initial, 1: arranging flowers, 2: flag rising, 3: celebration
-  const [confettiParticles, setConfettiParticles] = useState<{ x: number; y: number; color: string; size: number; type: string }[]>([]);
+  const [confettiParticles, setConfettiParticles] = useState<{ x: number; y: number; color: string; size: number; flowerType: string }[]>([]);
   const [fireworks, setFireworks] = useState<{ x: number; y: number; id: number }[]>([]);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   
@@ -38,13 +37,23 @@ const FlagHosting = () => {
     if (showConfetti) {
       // Create continuous flower petals throughout the anthem duration
       const createFlowerPetals = () => {
-        const particles = Array.from({ length: 200 }, (_, i) => ({
-          x: Math.random() * 100,
-          y: -10 - Math.random() * 20,
-          color: ['#FF9933', '#FFFFFF', '#138808', '#FFD700', '#FF69B4'][Math.floor(Math.random() * 5)],
-          size: 4 + Math.random() * 12,
-          type: Math.random() > 0.7 ? 'star' : Math.random() > 0.5 ? 'heart' : 'circle',
-        }));
+        // Use real flower emojis instead of hearts and stars
+        const flowerEmojis = ['🌸', '🌹', '🌺', '🌻', '🌼', '🌷', '💐', '🏵️'];
+        
+        // Create more particles with better distribution across the entire screen width
+        const particles = Array.from({ length: 300 }, () => {
+          // Create clusters of flowers in different areas of the screen
+          // This creates a more natural "raining from the sky" effect
+          const xPosition = Math.random() * 100; // Full window width coverage
+          
+          return {
+            x: xPosition,
+            y: -10 - Math.random() * 30, // Start further above the screen
+            color: ['#FF9933', '#FFFFFF', '#138808', '#FFD700', '#FF69B4'][Math.floor(Math.random() * 5)],
+            size: 8 + Math.random() * 24, // More size variation
+            flowerType: flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)],
+          };
+        });
         setConfettiParticles(particles);
       };
       
@@ -52,7 +61,8 @@ const FlagHosting = () => {
       createFlowerPetals();
       
       // Continue creating flower petals throughout the anthem
-      const interval = setInterval(createFlowerPetals, 3000); // Refresh petals every 3 seconds
+      // Use a shorter interval for more continuous flow of flowers
+      const interval = setInterval(createFlowerPetals, 2000); // Refresh petals every 2 seconds
       
       // Create fireworks
       const fireworksData = Array.from({ length: 8 }, (_, i) => ({
@@ -149,7 +159,7 @@ const FlagHosting = () => {
               {/* Flower arrangement animation (visible only during phase 1) */}
               {animationPhase === 1 && (
                 <motion.div 
-                  className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center justify-center"
+                  className="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center justify-center z-50"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -162,7 +172,7 @@ const FlagHosting = () => {
                     >
                       🌺 🌸 🌹 🌻 🌼
                     </motion.div>
-                    <p className="text-white text-lg font-medium">Arranging flowers...</p>
+                    <p className="text-white text-lg font-medium drop-shadow-lg">Arranging flowers...</p>
                   </div>
                 </motion.div>
               )}
@@ -312,65 +322,41 @@ const FlagHosting = () => {
                     ))}
                   </div>
 
-                  {/* Enhanced Confetti */}
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  {/* Enhanced Flower Rain - Full Window Coverage */}
+                  <div className="fixed inset-0 overflow-hidden pointer-events-none z-10">
                     {confettiParticles.map((particle, index) => (
                       <motion.div
                         key={index}
                         className="absolute"
                         style={{
                           left: `${particle.x}%`,
-                          top: '-20px',
+                          top: '-50px', // Start above the visible area
+                          fontSize: `${particle.size}px`,
                         }}
                         animate={{
-                          y: ['0vh', '110vh'],
+                          y: ['0vh', '120vh'], // Move beyond bottom of screen
                           x: [
                             `${particle.x}%`,
-                            `${particle.x + (Math.random() * 30 - 15)}%`,
+                            `${particle.x + (Math.random() * 40 - 20)}%`, // Wider spread
                           ],
-                          opacity: [1, 0.9, 0],
-                          rotate: [0, 720],
-                          scale: [1, 1.2, 0.8],
+                          opacity: [1, 0.95, 0.9, 0],
+                          rotate: [0, 360],
+                          scale: [1, 1.1, 0.9],
                         }}
                         transition={{
-                          duration: 6 + Math.random() * 4,
+                          duration: 8 + Math.random() * 6, // Slower falling
                           ease: 'easeOut',
-                          delay: Math.random() * 3,
+                          delay: Math.random() * 5, // More staggered appearance
                         }}
                       >
-                        {particle.type === 'star' ? (
-                          <div
-                            className="relative"
-                            style={{
-                              width: `${particle.size}px`,
-                              height: `${particle.size}px`,
-                              color: particle.color,
-                            }}
-                          >
-                            ⭐
-                          </div>
-                        ) : particle.type === 'heart' ? (
-                          <div
-                            className="relative"
-                            style={{
-                              width: `${particle.size}px`,
-                              height: `${particle.size}px`,
-                              color: particle.color,
-                            }}
-                          >
-                            ❤️
-                          </div>
-                        ) : (
-                          <div
-                            className="rounded-full"
-                            style={{
-                              backgroundColor: particle.color,
-                              width: `${particle.size}px`,
-                              height: `${particle.size}px`,
-                              boxShadow: `0 0 ${particle.size}px ${particle.color}`,
-                            }}
-                          />
-                        )}
+                        <div
+                          className="relative drop-shadow-lg"
+                          style={{
+                            filter: "drop-shadow(0 0 5px rgba(255,255,255,0.7))"
+                          }}
+                        >
+                          {particle.flowerType}
+                        </div>
                       </motion.div>
                     ))}
                   </div>
@@ -462,6 +448,12 @@ const FlagHosting = () => {
                               const ctx = canvas.getContext('2d');
                               canvas.width = 1080;
                               canvas.height = 1920;
+
+                              // Check if context is available
+                              if (!ctx) {
+                                console.error("Could not get canvas context");
+                                return;
+                              }
 
                               // Create dark background with subtle pattern
                               ctx.fillStyle = '#1a1a1a';
@@ -605,7 +597,7 @@ const FlagHosting = () => {
                                         text: 'I just digitally hosted the Indian Tiranga! 🇮🇳 #IndependenceDay #JaiHind #DigitalIndia',
                                         files: [new File([blob], 'tiranga-story.png', { type: 'image/png' })]
                                       });
-                                    } catch (error) {
+                                    } catch (_) {
                                       // Fallback to download
                                       downloadImage(blob);
                                     }
@@ -630,7 +622,7 @@ const FlagHosting = () => {
                                 alert('🎉 Perfect! Your Independence Day story image has been downloaded!\n\n📱 Next steps:\n1. Open Instagram app\n2. Tap your profile picture to add a story\n3. Select the downloaded image\n4. Share your patriotic moment!\n\n🇮🇳 The image already includes your message and hashtags!');
                               }
 
-                            } catch (error) {
+                            } catch (_) {
                               // Simple fallback
                               const text = 'I just digitally hosted the Indian Tiranga! 🇮🇳 #IndependenceDay #JaiHind #DigitalIndia';
                               if (navigator.clipboard) {
@@ -655,7 +647,7 @@ const FlagHosting = () => {
                         transition={{ delay: 2 }}
                       >
                         <p className="text-sm italic text-gray-700">
-                          "Freedom is not given, it is taken." - Netaji Subhas Chandra Bose
+                          &quot;Freedom is not given, it is taken.&quot; - Netaji Subhas Chandra Bose
                         </p>
                       </motion.div>
                     </motion.div>

@@ -2,10 +2,28 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const IndiaAchievements = () => {
-  const [selectedCategory, setSelectedCategory] = useState('space');
+type Achievement = {
+  title: string;
+  icon: string;
+  color: string;
+  items: {
+    year: string;
+    title: string;
+    description: string;
+  }[];
+};
 
-  const achievements = {
+type AchievementCategories = {
+  space: Achievement;
+  technology: Achievement;
+  economy: Achievement;
+  social: Achievement;
+};
+
+const IndiaAchievements = () => {
+  const [selectedCategory, setSelectedCategory] = useState<keyof AchievementCategories>('space');
+
+  const achievements: AchievementCategories = {
     space: {
       title: "Space Exploration",
       icon: "🚀",
@@ -136,7 +154,7 @@ const IndiaAchievements = () => {
     }
   };
 
-  const categories = Object.keys(achievements);
+  const categories = Object.keys(achievements) as Array<keyof AchievementCategories>;
 
   return (
     <section className="py-16 bg-gradient-to-br from-gray-900 via-black to-gray-800 relative overflow-hidden">
@@ -156,7 +174,7 @@ const IndiaAchievements = () => {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-100 mb-4">
-            India's Remarkable Achievements
+            India&apos;s Remarkable Achievements
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto">
             From independence to becoming a global power - celebrating 77 years of progress, innovation, and growth

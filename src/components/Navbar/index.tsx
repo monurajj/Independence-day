@@ -112,13 +112,13 @@ const Navbar = () => {
               <span className="ml-1">flags hosted</span>
             </div>
             
-            {/* Host Flag button */}
-            <Link
-              href="/host-flag"
+            {/* Host Flag button - triggers flag hosting directly */}
+            <button
+              data-host-flag
               className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#FF9933] to-[#ff8800] hover:from-[#e87b00] hover:to-[#d66f00] text-white text-base font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-white/10"
             >
               Host Flag
-            </Link>
+            </button>
           </div>
           
           {/* Mobile Menu Button */}
@@ -128,7 +128,7 @@ const Navbar = () => {
               isScrolled ? 'text-gray-300' : 'text-white'
             }`}>
               <span className="text-sm font-bold text-[#138808] drop-shadow-sm">{flagCount}</span> 
-              <span className="ml-0.5">flags</span>
+              <span className="ml-0.5">flags hosted</span>
             </div>
             
             {/* Hamburger button - always visible on mobile */}
@@ -198,14 +198,14 @@ const Navbar = () => {
                 </div>
               </div>
               
-              {/* Mobile CTA button */}
-              <Link
-                href="/host-flag"
+              {/* Mobile CTA button - triggers flag hosting directly */}
+              <button
+                data-host-flag
                 className="px-8 py-3 rounded-lg bg-gradient-to-r from-[#FF9933] to-[#ff8800] hover:from-[#e87b00] hover:to-[#d66f00] text-white text-lg font-semibold transition-all duration-300 shadow-lg border border-white/10"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Host the Flag
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}

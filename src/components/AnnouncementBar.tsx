@@ -16,7 +16,7 @@ const AnnouncementBar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: isScrolled ? 0 : 1 }}
       transition={{ duration: 0.4 }}
-      className={`fixed top-8 left-0 right-0 z-40 bg-transparent text-white text-center py-2 px-4 pointer-events-none transition-opacity duration-300 ${
+      className={`fixed top-10 left-0 right-0 z-40 bg-transparent text-white text-center py-2 px-4 pointer-events-none transition-opacity duration-300 ${
         isScrolled ? 'opacity-0' : 'opacity-100'
       }`}
     >

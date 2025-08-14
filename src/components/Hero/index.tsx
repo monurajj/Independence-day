@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 
 const Hero = () => {
   const mobileVideoRef = useRef<HTMLVideoElement | null>(null);
@@ -31,19 +30,23 @@ const Hero = () => {
 
     const onReady = (e: Event) => applyRate(e.currentTarget as HTMLVideoElement);
 
-    applyRate(mobileVideoRef.current);
-    applyRate(desktopVideoRef.current);
+    // Save refs to local variables to avoid issues with cleanup function
+    const mobileVideo = mobileVideoRef.current;
+    const desktopVideo = desktopVideoRef.current;
 
-    mobileVideoRef.current?.addEventListener('loadedmetadata', onReady);
-    mobileVideoRef.current?.addEventListener('play', onReady);
-    desktopVideoRef.current?.addEventListener('loadedmetadata', onReady);
-    desktopVideoRef.current?.addEventListener('play', onReady);
+    applyRate(mobileVideo);
+    applyRate(desktopVideo);
+
+    mobileVideo?.addEventListener('loadedmetadata', onReady);
+    mobileVideo?.addEventListener('play', onReady);
+    desktopVideo?.addEventListener('loadedmetadata', onReady);
+    desktopVideo?.addEventListener('play', onReady);
 
     return () => {
-      mobileVideoRef.current?.removeEventListener('loadedmetadata', onReady);
-      mobileVideoRef.current?.removeEventListener('play', onReady);
-      desktopVideoRef.current?.removeEventListener('loadedmetadata', onReady);
-      desktopVideoRef.current?.removeEventListener('play', onReady);
+      mobileVideo?.removeEventListener('loadedmetadata', onReady);
+      mobileVideo?.removeEventListener('play', onReady);
+      desktopVideo?.removeEventListener('loadedmetadata', onReady);
+      desktopVideo?.removeEventListener('play', onReady);
     };
   }, []);
   
@@ -121,7 +124,7 @@ const Hero = () => {
         >
           
           <motion.div variants={item} className="relative">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100 mb-2 min-h-[60px] sm:min-h-[70px]">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100 mb-2 min-h-[60px] sm:min-h-[70px] mt-[-10px]">
               Honoring Our Freedom
             </h2>
           </motion.div>

@@ -219,7 +219,7 @@ const Footer = () => {
         >
           {/* Social Icons */}
           <div className="flex space-x-6">
-            {socialIcons.map((social, index) => (
+            {socialIcons.map((social) => (
               <motion.div
                 key={social.name}
                 whileHover={{ scale: 1.2, rotate: 5 }}
@@ -241,7 +241,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="text-center">
             <p className="text-gray-400 mb-2">
-              Celebrating India's 78th Independence Day | Jai Hind 🇮🇳
+              Celebrating India&apos;s 78th Independence Day | Jai Hind 🇮🇳
             </p>
             <p className="text-gray-500 text-sm">
               © 2024 Independence Day Celebration | Building Digital India Together

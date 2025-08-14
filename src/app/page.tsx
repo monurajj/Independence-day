@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FlagHosting from "../components/FlagHosting";
@@ -45,7 +45,7 @@ export default function Home() {
               <div className="text-center p-4 sm:p-5 md:p-6 rounded-lg bg-gradient-to-br from-white/20 to-white/5 border border-white/20">
                 <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🕊️</div>
                 <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2">1920s - Non-Violence</h3>
-                <p className="text-sm sm:text-base text-gray-300">Gandhi's non-violent resistance movement gained momentum across the nation.</p>
+                <p className="text-sm sm:text-base text-gray-300">Gandhi&apos;s non-violent resistance movement gained momentum across the nation.</p>
               </div>
               
               <div className="text-center p-4 sm:p-5 md:p-6 rounded-lg bg-gradient-to-br from-[#138808]/20 to-[#138808]/5 border border-[#138808]/20">
