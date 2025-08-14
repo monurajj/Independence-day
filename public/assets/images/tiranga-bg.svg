@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="35%" r="80%">
+      <stop offset="0%" stop-color="#1f2937"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="saffron" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffb366"/>
+      <stop offset="100%" stop-color="#FF9933"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1aa34a"/>
+      <stop offset="100%" stop-color="#138808"/>
+    </linearGradient>
+    <filter id="noise" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.04" />
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <!-- Soft blurred orbs -->
+  <g opacity="0.25">
+    <circle cx="250" cy="160" r="160" fill="url(#saffron)"/>
+    <circle cx="1350" cy="720" r="220" fill="url(#green)"/>
+  </g>
+
+  <!-- Tricolor waves -->
+  <g opacity="0.35">
+    <path d="M0,340 C220,300 380,360 620,340 C860,320 980,260 1200,300 C1420,340 1600,300 1600,300 L1600,420 L0,420 Z" fill="url(#saffron)"/>
+    <path d="M0,420 C260,420 420,400 680,420 C940,440 1160,420 1400,430 C1600,438 1600,460 1600,460 L1600,540 L0,540 Z" fill="#ffffff" opacity="0.5"/>
+    <path d="M0,540 C220,560 420,520 660,540 C900,560 1120,560 1360,540 C1540,526 1600,560 1600,560 L1600,700 L0,700 Z" fill="url(#green)"/>
+  </g>
+
+  <!-- Subtle film grain -->
+  <rect width="1600" height="900" filter="url(#noise)"/>
+</svg>
+
