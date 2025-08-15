@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Monadnocks | Celebrating 78th Independence Day",
+  title: "Monadnocks | Celebrating 79th Independence Day",
   description: "Join Monadnocks in celebrating India's 78th Independence Day with interactive flag hosting and patriotic celebrations.",
   keywords: "Independence Day, India, Monadnocks, 78th Independence Day, Celebration",
 };
