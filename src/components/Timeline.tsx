@@ -21,7 +21,7 @@ const Timeline = () => {
             Timeline of Freedom
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Key dates in India's journey to independence
+            Key dates in India&apos;s journey to independence
           </p>
         </div>
 

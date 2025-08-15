@@ -22,7 +22,7 @@ export default function HostFlagPage() {
                 Digitally Host the Tiranga
               </h1>
               <p className="text-lg text-gray-300 mb-8">
-                Join millions in celebrating India's 78th Independence Day. Click the
+                Join millions in celebrating India&apos;s 78th Independence Day. Click the
                 button to hoist the Tiranga and let the patriotic celebration begin!
               </p>
 

@@ -41,7 +41,7 @@ const IndependenceMovements = () => {
             Major Independence Movements
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Key movements that shaped India's path to freedom
+            Key movements that shaped India&apos;s path to freedom
           </p>
         </div>
 

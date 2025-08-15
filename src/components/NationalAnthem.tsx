@@ -123,8 +123,8 @@ const NationalAnthem = () => {
                     
                     <div className="mt-8 p-4 bg-gray-600/30 rounded-lg">
                       <p className="text-gray-300 text-sm italic">
-                        "Thou art the ruler of the minds of all people, dispenser of India's destiny. 
-                        The name rouses the hearts of Punjab, Sind, Gujarat and Maratha, of the Dravid and Orissa and Bengal."
+                        &quot;Thou art the ruler of the minds of all people, dispenser of India&apos;s destiny. 
+                        The name rouses the hearts of Punjab, Sind, Gujarat and Maratha, of the Dravid and Orissa and Bengal.&quot;
                       </p>
                       <p className="text-gray-400 text-xs mt-2">- Rabindranath Tagore</p>
                     </div>

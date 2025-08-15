@@ -104,7 +104,7 @@ const CulturalHeritage = () => {
         {/* Quote Section */}
         <div className="mt-16 text-center">
           <blockquote className="text-2xl md:text-3xl font-bold text-gray-100 mb-4">
-            "Unity in Diversity"
+            &quot;Unity in Diversity&quot;
           </blockquote>
           <p className="text-xl text-gray-300 mb-6">
             Our strength lies in our differences, our beauty in our variety, and our power in our unity.

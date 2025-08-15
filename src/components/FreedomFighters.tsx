@@ -334,7 +334,7 @@ const FreedomFighters = () => {
                   <div className="space-y-3 sm:space-y-4">
                     {selectedFighter.famousQuotes.map((quote, idx) => (
                       <blockquote key={idx} className="border-l-2 sm:border-l-4 border-[#138808] pl-3 sm:pl-4 py-1 sm:py-2">
-                        <p className="text-gray-300 text-sm sm:text-base italic">"{quote}"</p>
+                        <p className="text-gray-300 text-sm sm:text-base italic">&quot;{quote}&quot;</p>
                       </blockquote>
                     ))}
                   </div>

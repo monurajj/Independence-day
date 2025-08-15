@@ -693,7 +693,7 @@ const FlagHosting = () => {
                                         text: 'I just digitally hosted the Indian Tiranga! 🇮🇳 #IndependenceDay #JaiHind #DigitalIndia',
                                         files: [new File([blob], 'tiranga-story.png', { type: 'image/png' })]
                                       });
-                                    } catch (_) {
+                                    } catch {
                                       // Fallback to download
                                       downloadImage(blob);
                                     }
@@ -718,7 +718,7 @@ const FlagHosting = () => {
                                 alert('🎉 Perfect! Your Independence Day story image has been downloaded!\n\n📱 Next steps:\n1. Open Instagram app\n2. Tap your profile picture to add a story\n3. Select the downloaded image\n4. Share your patriotic moment!\n\n🇮🇳 The image already includes your message and hashtags!');
                               }
 
-                            } catch (_) {
+                            } catch {
                               // Simple fallback
                               const text = 'I just digitally hosted the Indian Tiranga! 🇮🇳 #IndependenceDay #JaiHind #DigitalIndia';
                               if (navigator.clipboard) {
