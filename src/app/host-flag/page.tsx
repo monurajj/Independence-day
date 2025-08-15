@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Host the Tiranga | Happy Independence Day",
   description:
-    "Digitally host the Indian Tiranga and celebrate India's 78th Independence Day with animation, music and confetti.",
+    "Digitally host the Indian Tiranga and celebrate India's 79th Independence Day with animation, music and confetti.",
 };
 
 export default function HostFlagPage() {
