@@ -20,7 +20,7 @@ const AnnouncementBar = () => {
         isScrolled ? 'opacity-0' : 'opacity-100'
       }`}
     >
-      Celebrating <span className="font-semibold text-[#FF9933]">78 years of freedom</span>! Join millions and <span className="font-semibold text-[#138808]">digitally host the Tiranga</span> to honor our nation.
+      Celebrating <span className="font-semibold text-[#FF9933]">79 years of freedom</span>! Join millions and <span className="font-semibold text-[#138808]">digitally host the Tiranga</span> to honor our nation.
     </motion.div>
   );
 };
